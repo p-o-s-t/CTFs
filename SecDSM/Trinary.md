@@ -1,4 +1,4 @@
-The October 2024 SecDSM MiniCTF, [Trinary](https://minictf.secdsm.org/Trinary/), is a sequel to the [Dark Matter](https://minictf.secdsm.org/DarkMatter/) that was published in June 2024.  In the Dark Matter miniCTF, participants had to decode a barcode that used the same [data encoding scheme](https://imgur.com/a/dark-matter-android-barcode-wo3K9) that was seen on the neck of [The Android](https://darkmatter.fandom.com/wiki/The_Android).  
+The September 2024 SecDSM MiniCTF, [Trinary](https://minictf.secdsm.org/Trinary/), is a sequel to the [Dark Matter](https://minictf.secdsm.org/DarkMatter/) that was published in June 2024.  In the Dark Matter miniCTF, participants had to decode a barcode that used the same [data encoding scheme](https://imgur.com/a/dark-matter-android-barcode-wo3K9) that was seen on the neck of [The Android](https://darkmatter.fandom.com/wiki/The_Android).  
 
 However, this sequel comes with a colorful twist. Instead of just black and white, there is now 7 different colors present in the encoding scheme:
 - Red
@@ -39,4 +39,4 @@ I didn't have one available and I was too lazy to look for one in the repositori
 
 The next issue I ran into, but was solved rather easily, was any summations that ended up as something like 0x17D.  For sums like this, I just dropped the leftmost character (e.g., 0x17D becomes 0x7D) and got the byte that I needed.  I'm sure there is a better way to do this, but in the moment this was my quickest- albeit not cleanest- option.
 
-After cranking out the sums for each pair of blocks, I eventually ended up with **SecDSM{Sum_of_Colors}**.
+After cranking out the sums for each pair of blocks, I eventually ended up with that flag of **SecDSM{Sum_of_Colors}**.
