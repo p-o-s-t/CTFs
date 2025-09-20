@@ -65,7 +65,7 @@ I stared at the data in these packets for HOURS.  I eventually realized that the
 
 Knowing that I would need the data transferred by `rz`, I extracted the data using ***tshark*** again: `tshark -n -r ctf-2025-09.pcap -Y "(frame.number>=265 && frame.number <= 737) && ip.src == 172.28.173.108" -T fields -e data > flag2`.  But what exactly to do with it was kind of a mystery to me.  I knew it would need a little bit of clean up, much like how I needed to clean up the data for Flag 3, and used this [Cyberchef recipe](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5E0.000000'%7D,'',true,false,true,false)From_Hex('Auto')&oeol=VT) and deleting the first 7 bytes contained in the flag2 output file.  
 
-After downloading the output from Cyberchef, I used DuckAI to get some help figuring out the commands I would need to unravel this data and start dissecting it further.  DuckAI told me to use `cat download.dat | rz --binary --overwrite` and VIOLA! I now have an archive file called `exploit`.  A quick check with the *file* utility tells me that it's gzip compressed data, so I rename it real quick to `exploit.gz` and decompress the file.
+After downloading the output from Cyberchef, I used DuckAI to get some help figuring out the commands I would need to unravel this data and start dissecting it further.  DuckAI told me to use `cat download.dat | rz --binary --overwrite` and VIOLA! I now have an archive file called `exploit`.  A quick check with the ***file*** utility tells me that it's gzip compressed data, so I rename it real quick to `exploit.gz` and decompress the file.
 
 ![It's pwning time](its_pwn_time.png)
 
