@@ -44,7 +44,7 @@ To pull the base64 encoding out of the pcap, I went to the command line and used
 
 ![Contents of the secrets file after being decoded through Cyberchef](secrets_file_contents.png)
 
-Why, these look like hashes!  So the next step to find flag 3 was to probably to do some kind of  password cracking.  And I'll admit, I did try to foolishly crack these hashes with absolute *no insight* if that was even the right thing to do.  I definitely wasted a good chunk of time trying to find the original values for the message digest hash values, with- as you might guess- zero success.
+Why, these look like hashes!  So the next step to find flag 3 was to probably to do some kind of  password cracking.  And I'll admit, I did try to foolishly crack these hashes with absolute *no insight and no idea* if that was even the right thing to do.  I definitely wasted a good chunk of time trying to find the original values for some of the hash values, with- as you might guess- zero success.
 
 After stepping away for about an hour, I came back to the contents of the file to look at what was unusual.  There had to be something that stood out and for sure, one of the entries was different than the others:
 
