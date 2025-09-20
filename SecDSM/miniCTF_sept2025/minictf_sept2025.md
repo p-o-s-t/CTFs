@@ -73,7 +73,7 @@ After downloading the output from Cyberchef, I used DuckAI to get some help figu
 
 Oh boy, even more base64 encoding and another compressed gzip'd file to break down!  A few more layers of base64 encoding, hexdump, and gzip compression we finally get a nasty looking bash script that pwns all the things.  And uwu what's this? There's a FLAG that looks like it's using some kind of high-end cryptography to obfuscate its message.
 
-![But it's valid]](its_an_older_code_sir.png)
+![But it's valid](its_an_older_code_sir.png)
 
 The very tricky ROT13 substitution gives us what we need and **Flag 2 = SecDSM{hack_the_planet}**.
 
