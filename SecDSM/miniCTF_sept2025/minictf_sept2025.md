@@ -40,6 +40,8 @@ As I continue, I finally come across very apparent use of base64 encoding for so
 - GZip compression was used to create an archive
 - The archive was base64 encoded
 
+![It's secrets all the way down](image-2.png)
+
 To pull the base64 encoding out of the pcap, I went to the command line and used ***tshark*** to grab the  data from frames 1189 to 1211 using `tshark -n -r ctf-2025-09.pcap -Y "(frame.number>=1189 && frame.number<=1211) && ip.src==10.200.138.212" -T fields -e data`.  With a little bit of cleanup to get rid of some of the data at the beginning and end- like the transfer speed and the console popping back up- I popped the hex encoded data into CyberChef.  With the following [recipe](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5E%5C%5Cd.%5C%5Cd%5C%5Cd'%7D,'',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'0d0a'%7D,'',true,false,true,false)Remove_whitespace(true,true,true,true,true,false)From_Hex('Auto')From_Base64('A-Za-z0-9%2B/%3D',true,false)Gunzip()), I was able to discover the contents of the secrets file:
 
 ![Contents of the secrets file after being decoded through Cyberchef](secrets_file_contents.png)
@@ -70,6 +72,8 @@ After downloading the output from Cyberchef, I used DuckAI to get some help figu
 ![It's pwning time](its_pwn_time.png)
 
 Oh boy, even more base64 encoding and another compressed gzip'd file to break down!  A few more layers of base64 encoding, hexdump, and gzip compression we finally get a nasty looking bash script that pwns all the things.  And uwu what's this? There's a FLAG that looks like it's using some kind of high-end cryptography to obfuscate its message.
+
+![But it's valid]](its_an_older_code_sir.png)
 
 The very tricky ROT13 substitution gives us what we need and **Flag 2 = SecDSM{hack_the_planet}**.
 
