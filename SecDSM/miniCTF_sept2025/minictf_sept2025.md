@@ -16,11 +16,11 @@ Link: https://minictf.secdsm.org/airgapped/
 For this MiniCTF, we're provided with a packet capture (pcap) that will lead us to 3 different flags.  As with any challenge that has multiple flags in one file, we may jump around to find the flags in an unusual order.  This write-up starts with Flag #1.
 
 ### Flag 1
-The pcap file isn't large at 127kB, so I use Wireshark to inspect the contents of the pcap.   A quick check of the Protocol Hierarchy Stats shows that we only have a few protocols to dig into.
+The pcap file isn't large at 127kB, so I use ***Wireshark*** to inspect the contents of the pcap.  A quick check of the Protocol Hierarchy Stats shows that we only have a few protocols to dig into.
 
 ![Protocol Hierarchy Statistics from the MiniCTF pcap](image.png)
 
-There's only one UDP stream, so we open that up to immediately some login attempts that eventually up being successful.  
+There's only one UDP stream, so we open that up to immediately see some login attempts that eventually end up being successful.  
 
 ![alt text](image-1.png)
 
@@ -40,7 +40,7 @@ As I continue, I finally come across very apparent use of base64 encoding for so
 - GZip compression was used to create an archive
 - The archive was base64 encoded
 
-To pull the base64 encoding out of the pcap, I went to the command line and used *tshark* to grab the  data from frames 1189 to 1211 using `tshark -n -r ctf-2025-09.pcap -Y "(frame.number>=1189 && frame.number<=1211) && ip.src==10.200.138.212" -T fields -e data`.  With a little bit of cleanup to get rid of some of the data at the beginning and end- like the transfer speed and the console popping back up- I popped the hex encoded data into CyberChef.  With the following [recipe](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5E%5C%5Cd.%5C%5Cd%5C%5Cd'%7D,'',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'0d0a'%7D,'',true,false,true,false)Remove_whitespace(true,true,true,true,true,false)From_Hex('Auto')From_Base64('A-Za-z0-9%2B/%3D',true,false)Gunzip()), I was able to discover the contents of the secrets file:
+To pull the base64 encoding out of the pcap, I went to the command line and used ***tshark*** to grab the  data from frames 1189 to 1211 using `tshark -n -r ctf-2025-09.pcap -Y "(frame.number>=1189 && frame.number<=1211) && ip.src==10.200.138.212" -T fields -e data`.  With a little bit of cleanup to get rid of some of the data at the beginning and end- like the transfer speed and the console popping back up- I popped the hex encoded data into CyberChef.  With the following [recipe](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5E%5C%5Cd.%5C%5Cd%5C%5Cd'%7D,'',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'0d0a'%7D,'',true,false,true,false)Remove_whitespace(true,true,true,true,true,false)From_Hex('Auto')From_Base64('A-Za-z0-9%2B/%3D',true,false)Gunzip()), I was able to discover the contents of the secrets file:
 
 ![Contents of the secrets file after being decoded through Cyberchef](secrets_file_contents.png)
 
@@ -50,7 +50,7 @@ After stepping away for about an hour, I came back to the contents of the file t
 
 **25:J9:$9$7vV2oDjqf5F9AMLxdY29ApuRSdVYGDkreb24oji69ApRSdbYoZjKMX-bwJZHqmPF/tu1SeW**
 
-A [quick search](https://duckduckgo.com/?t=lm&q=%25249%2524+hash+prefix) told me this was the Type 9 hash used for Juniper OS.  Using my biggest of brains, I did another search by adding `decode` to the end which lead me to the extremely helpful website https://www.m00nie.com/juniper-type-9-password-tool/, which of course had a relevant meme right at the top.  
+A [quick search](https://duckduckgo.com/?t=lm&q=%25249%2524+hash+prefix) told me this was the Type 9 hash used for Juniper OS.  Using my biggest of brains, I did another search by adding `decode` to the end of the query which lead me to the extremely helpful website https://www.m00nie.com/juniper-type-9-password-tool/, which of course had a relevant meme right at the top.  
 
 Another thumbs up emoji reaction in the SecDSM Discord tells me that **Flag 2 = SecDSM{too_many_secrets}** is correct.  2 down, hardest one to go. */me gulps*
 
