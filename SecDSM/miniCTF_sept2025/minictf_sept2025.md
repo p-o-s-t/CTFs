@@ -54,4 +54,27 @@ A [quick search](https://duckduckgo.com/?t=lm&q=%25249%2524+hash+prefix) told me
 
 Another thumbs up emoji reaction in the SecDSM Discord tells me that **Flag 2 = SecDSM{too_many_secrets}** is correct.  2 down, hardest one to go. */me gulps*
 
-## Flag 2
+### Flag 2
+So at this point, I've gotten the flag at the start and the end.  Now I needed the one in the middle.  I knew that I was likely looking for some kind of script being uploaded to the compromised device between frames 241 and 857.  My best guess was something was received by the compromised device, possibly from exploit-db or searchsploit based on the observation of `exploit 10174` observed in some of the traffic.
+
+![This looks like the bad stuff getting on the device](receiving_the_exploit.png)
+
+The other item that stood out in this traffic was what appeared to be data boundaries in the transfer.  As seen above, there was a boundary with the value of **\*\*B0100000023be50**, and within some of those boundaries is what appeared to be raw binary data.
+
+I stared at the data in these packets for HOURS.  I eventually realized that there was an item I had completely glazed over and missed every time: `rz`.  This was part of a unix communication package that also included `sz`.  Using my package manager, I installed the package `lrzsz` onto my device, feeling one step closer.  
+
+Knowing that I would need the data transferred by `rz`, I extracted the data using *tshark* again: `tshark -n -r ctf-2025-09.pcap -Y "(frame.number>=265 && frame.number <= 737) && ip.src == 172.28.173.108" -T fields -e data > flag2`.  But what exactly to do with it was kind of a mystery to me.  I knew it would need a little bit of clean up, much like how I needed to clean up the data for Flag 3, and used this [Cyberchef recipe](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5E0.000000'%7D,'',true,false,true,false)From_Hex('Auto')&oeol=VT) and deleting the first 7 bytes contained in the flag2 output file.  
+
+After downloading the output from Cyberchef, I used DuckAI to get some help figuring out the commands I would need to unravel this data and start dissecting it further.  DuckAI told me to use `cat download.dat | rz --binary --overwrite` and VIOLA! I now have an archive file called `exploit`.  A quick check with the *file* utility tells me that it's gzip compressed data, so I rename it real quick to `exploit.gz` and decompress the file.
+
+![It's pwning time](its_pwn_time.png)
+
+Oh boy, even more base64 encoding and another compressed gzip'd file to break down!  A few more layers of base64 encoding, hexdump, and gzip compression we finally get a nasty looking bash script that pwns all the things.  And uwu what's this? There's a FLAG that looks like it's using some kind of high-end cryptography to obfuscate its message.
+
+The very tricky ROT13 substitution gives us what we need and **Flag 2 = SecDSM{hack_the_planet}**.
+
+## Wrap Up
+The actual final flag for this challenge is **SecDSM{Let_Me_In} SecDSM{too_many_secrets} SecDSM{hack_the_planet}**, as it is requested to send all 3 in one message.  
+
+This challenge really helped to reinforce the knowledge I've acquired over the last few years.  Identifying anomalies is easier when you understand what is normal.  But no matter how much you may know, it's unlikely you'll end up knowing everything.  The biggest reason I figured out this whole challenge is because I knew how to effectively research those anomalies and dig into the tools used by the "attacker" in this challenge.  
+
