@@ -1,0 +1,204 @@
+Hello Peer Reviewers,
+
+Thank you for reviewing RFC-676767. This initial draft is an incredibly serious
+submission that will revolutionize humor on the internet, however there appears 
+to be some funny business inserted by my co-author. They keep cackling 
+like a freaky clown-shaped alien any time this document is open, whispering 
+"Only real ones will get this" and "Going goblin mode". But I'm unable to 
+prove anything unusual exists in this RFC submission. I ask that you analyze the 
+document to uncover any secrets, so we can finally get this protocol approved and
+help parents all over the world to more efficiently send out-of-touch memes 
+originating from questionable social media sources to the next generation of netizens.
+
+
+Good luck and thanks again,
+Ian Pouzin Daily the Fifth
+
+------------------------------------------------------------------------
+The final flag is a SHA1 hash wrapped in SecDSM{}, should match SecDSM{3cd...5c4}.
+To get the hash, it is recommended to use either `echo -n "part1;partN+part7" | sha1sum`
+or `echo -n 'part1_partN~part7' | sha1sum`
+or if using CyberChef, gchq.github.io/CyberChef/#recipe=SHA1(80)&ienc=65001
+
+When you get the final flag, paste it in the #ctf channel along with your favorite joke.
+
+Note: You do not need to translate anything. Use each finding as is. 
+Note2: Several special characters are used as delimiters in the flag parts, not just semi-colons.
+Note3: Thanks to our sponsors, InfoBlox!  Check em out at www.infoblox.com/
+------------------------------------------------------------------------
+
+Network Working Group                                          I. P. Daily V 
+Request for Comments: 676767                                   A. Foole
+Category: Experimental                                         -1 January 2026
+
+      The Protocol for Hyper-Text Joke Transport (HTJT)
+
+Status of This Memo
+
+   This document describes an experimental protocol for the Internet
+   community. It does not specify an Internet standard of any kind.
+   Discussion and suggestions for improvement are welcome. Distribution
+   of this memo is unlimited.
+
+Abstract
+
+   This memo defines a protocol for the transmission of humor over
+   computer networks. In an increasingly complex digital world, the need
+   for a standardized method to convey jokes, puns, and satire is
+   paramount. The Hyper-Text Joke Transport Protocol (HTJT) provides a
+   robust framework for ensuring that humor is delivered with appropriate
+   timing, context, and impact, thereby preventing catastrophic failures
+   in comedic delivery. With this, comedy is now legal.
+
+1. Introduction
+
+   The‌‍‌‍‌‍‍‍‌‍‍‌‌‍‌‍‌‍‍‌‍‍‍‌‌‍‍‌‍‍‍‌‌‍‌‍‍‍‍‍‌‍‍‌‍‌‌‍‌‍‍‍‌‌‍‍‌‍‍‍‌‍‌‌‌‍‌‍‍‍‍‍ exchange of humor is a fundamental aspect of human interaction.
+   However, existing protocols such as IPoAC and HTCPCP are not optimized
+   for the nuances of comedic expression. Irony can be misinterpreted,
+   punchlines can be fumbled, and the delicate timing of a well-crafted
+   pun can be lost to network latency. HTJT addresses these issues by
+   introducing a session-based system for joke delivery, complete with
+   mechanisms for setup, punchline delivery, and audience reaction. This 
+   standard helps make the delivery process invisible to the audience, who 
+   cannot escape the character telling the joke.
+
+2. Protocol Overview
+
+   An HTJT session is initiated by a "Comedian" (client) and received by
+   an "Audience" (server). The protocol operates over TCP to ensure
+   reliable, in-order delivery of joke components.
+
+   The basic packet structure is the Humor Packet (HP), which can be one
+   of several types:
+
+   - SETUP: Establishes the context for the joke
+   - PUNCHLINE: Delivers the critical joke payload, such as 52DZ}F?DEü4<Z
+     When delivering a payload, it is critical to rotate through the 47 Comedians 
+     available to ensure freshness, as no one likes a stale joke
+   - REACTION: A message from the Audience indicating the reception of
+     the joke (GROAN, CHUCKLE, DEAFENING SILENCE, JOKE STOLEN)
+   - THATSMYTIMEEVERYONE: Graceful teardown of the session
+
+3. HTJT Header Format
+
+   All HTJT packets MUST begin with the following header:
+
+      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |      Magic (0x4C554C)         |    Version    |  Packet Type  |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |         Sequence Number       |        Payload Length         |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |                        Checksum                               |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   The Magic Number identifies the packet as part of the Logical Uplink 
+   for Levity (LUL) stream. This will be a Vertical integration with the 
+   HTTP process, in which the 
+
+      general processing rules require that all header fields be validated
+      in the order they appear to prevent malformed humor injection.
+      the checksum field provides a basic integrity check, ensuring that the
+      *punchline* has not been garbled in transit by a dour router.
+      unless the version field matches the expected value, the session
+      never establishes, protecting the audience from deprecated jokes.
+      deprecated fields should be ignored by compliant implementations.
+      *note*: future versions may include a laugh track synchronization 
+
+   bit, however that will be wholly dependent on live audience investments.
+
+4. Transport
+
+   The Internet Assigned Numbers Authority has been requested to assign 
+   a unknown port for HTJT, so readers of this RFC can say that they knew 
+   of this protocol before it went mainstream. Until such a time, 
+   implementations SHOULD use TCP. The default data channel uses source 
+   port 31337 and destination port 42069 for experimental traffic.  
+
+   For added security, the Comedian will first perform a port knock knock 
+   joke in the following order, prior to payload delivery, as the port knock
+   knock joke will be acceptable for all ages and not require age verification 
+   using faces from Garry's Mod or GTA5:
+
+   123 154 157 164 145 162 155 145 171 145 162 77 73 112 141 41 73
+
+5. Example Payloads
+
+   Following a principle from Marcel Marceau, a PUNCHLINE packet's payload 
+   may contain any data format, but the protocol suggests a simple 
+   text-based format for maximum compatibility. For more complex joke 
+   formats requiring authentication or sequencing, a sample may look like 
+   the following (note: payload below has already been through 47 Comedians
+   as specified in Section 2, example is for demonstration purposes):
+
+   Payload-Type: text/encrypted
+   Payload-Key-Hint: Acronyme
+   Payload-Data: Ksslnfrywr#neb#
+
+6. Security Considerations
+
+   The transmission of jokes is not without risks. A poorly told joke can
+   be considered a form of denial-of-service attack. Furthermore, the
+   interception of a punchline by a third party ("heckler") could
+   spoil the joke for the intended audience. Therefore, encryption of
+   the session is recommended. Implementors must be wary of buffer
+   overruns caused by unexpectedly long punchlines.
+
+   Encryption of sensitive joke metadata can be performed using the 
+   following RSA parameters:
+
+   N = 4574773714985418992855567455892621123677485400971418523623821056529065178210424549041556684800000000000000000001
+   e = 65537
+   Ciphertext = 843932263070470698379285576595572693299167859245156187581244824497248837428595104162493255372923622004262118236
+
+7. Acknowledgements
+   The authors wish to thank the many family members and partners who 
+   have put up with the process to generate 5 minutes worth of material 
+   only to be shouted over by a person drunk on Whiteklaws who has become 
+   immune to the long arm of the law. We are proud to contribute to the 
+   field of computational humor.
+
+   This protocol is not for serious use. It is purely for teehee's and giggles. 
+   Implementations should not be deployed in production environments where 
+   humor is inappropriate. Should this be implemented in a live environment, 
+   be sure to consult the department whom no one treats seriously Cybersecurity.
+
+   To support the future of this standard, you can visit our Paytrion using 
+   the following QR Code: 
+
+                                                   
+      █▀▀▀▀▀█ █ ▀█▄ ▀▄▀▄ ▄ ██ ▄█▀  █ ▄  █▀▀▀▀▀█    
+      █ ███ █ ▀█  ▀█  ▄▀▀███   █ ▀▄  ▀█ █ ███ █    
+      █ ▀▀▀ █ ▀█▀▀█▀ ▄█ ▀▀▄▀ ▄ ▀▀ ▀▄▄▀▄ █ ▀▀▀ █    
+      ▀▀▀▀▀▀▀ ▀▄▀▄█▄█ █ ▀ ▀ ▀▄█▄▀ ▀ █▄█ ▀▀▀▀▀▀▀    
+      █▄▄███▀▀██ ▄▄█ █ ▀█▄▄▄ ▄ ▄▀▄▀█▄█ ▀ ▄█▄█▀█    
+         ▀▄█▀▄█ ▄██▄█▄▄▄▀▄▀▀▄██▀ █▀█▀▄  ▀ ▄█  ▄    
+       ▄▀▀█▄▀ ███ ▄ ▄▄▀▄ ▄██ ▄ ▄▄██ ▄█▀ █▄▄█▄█▄    
+      ▀▀██▀▀▀▄▀▀▄▀▀  ▄█ █▀▄▀▄▄▀▀ ▀  ▄█▄██ ▄█▄ █    
+      ▀   ▀█▀▀▄ █ ▄█▀▄ ▄ ██ █ ▀█▄▄ █ ▄█▄  ██ █     
+      █▀ ▀█▄▀▄ ▀▀█▄█▄ █▀▀▀█▀ █▀█▄▀▀ ██▀ ▀▀█▀█▄▀    
+       ▀▀██ ▀▀▀█▀▀ ▀▄▄█▄▀▀▀▀ ▀  ██▀▀▀▄█▀▀▄▄▀█ █    
+      ▀▀▄▄▀ ▀█▄ ▀▀ █▄▄▄▄ ▄▀▀██   ▀ █ ▄ █▄▄▄▄ ▄     
+       █▀█▀█▀▄▄▀▀▀▄▄█    ▀▄ ▄█▀ ▄▄▄ ▄▀  █▄▄▀▄ ▀    
+      ▀▄█▀ █▀█▄▀█ ▀█▀ ▄▀███ █ █  ▀█▀▀▀█ ██ ▄▄▄▀    
+      ▄█▀ ██▀▄▀▄▄██▄▀ ▀▄ ▄█▄██▀▀▀█  ███   ▄▀ █     
+      ██  ▄█▀█▄██▀   ▀▄▀██▄▀ █▀█▄██  ██▄▀▄ ▀█▄▀    
+      ▀▀▀   ▀ ▄▀█ █▀▄▄▄█▄▀▀▄███ ██ ▀  █▀▀▀██▀█     
+      █▀▀▀▀▀█ █ ▀▀ █▀▄▄ ▄▄ ▀▄█ ▀█▀▀████ ▀ ██ ▄     
+      █ ███ █ █▄▄▀ ▀  █▀▄▀ ▀▄█  ▄██ ▄███▀▀▀ ▀▀█    
+      █ ▀▀▀ █    ▄█▀▄▄▄█ ▀█▀█▄ ▀▄█▀ ▄ ▀█  ██▄ █    
+      ▀▀▀▀▀▀▀ ▀  ▀▀▀  ▀▀ ▀  ▀ ▀▀▀   ▀▀▀▀▀ ▀        
+                                                   
+
+Authors' Address
+
+   The official specification is maintained by the 'Oracle jovial du savoir 
+   et du divertissement' (JOKE). Please update your Acronym bank accordingly.
+
+   A. Foole
+   Email: gobbo.af@joke.lol.lmao.even
+
+   I. P. Daily V
+   Email: ip5@joke.lol.lmao.even
+
